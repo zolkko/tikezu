@@ -1,8 +1,4 @@
-import {
-  create,
-  Payload,
-  verify,
-} from "https://deno.land/x/djwt@v3.0.2/mod.ts";
+import { create, Payload, verify } from "djwt";
 
 interface JWTPayload {
   username: string;

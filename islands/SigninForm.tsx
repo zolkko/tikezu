@@ -77,7 +77,7 @@ export default function SigninForm() {
           id="password"
           name="password"
           value={password}
-          onChange={(e) => setPassword(e.currentTarget.value) }
+          onChange={(e) => setPassword(e.currentTarget.value)}
           className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           placeholder="Enter your password"
         />
