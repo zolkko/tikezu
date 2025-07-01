@@ -1,17 +1,18 @@
-import { authenticateUser } from "../../../utils/auth.ts";
+import { authenticateUser } from "../../lib/auth.ts";
 import { createToken } from "../../lib/jwt.ts";
 
 export async function handler(
   req: Request,
 ): Promise<Response> {
   if (req.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
+    return new Response(JSON.stringify({ error: "Method Not Allowed" }), {
+      status: 405,
+    });
   }
 
   try {
     const body = await req.json();
     const { username, password } = body;
-
     const user = authenticateUser(username, password);
     if (!user) {
       return new Response(
@@ -29,11 +30,16 @@ export async function handler(
       JSON.stringify({ token }),
       {
         status: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Set-Cookie":
+            `auth-token=${token}; HttpOnly; Path=/; SameSite=Strict; Secure`,
+        },
       },
     );
   } catch (error) {
-    console.error("failed to authenticate user: ", error);
+    console.error("Failed to authenticate user:", error);
+
     return new Response(
       JSON.stringify({ error: "Internal Server Error" }),
       {
