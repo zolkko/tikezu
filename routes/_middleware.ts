@@ -58,6 +58,15 @@ export async function handler(req: Request, ctx: FreshContext<State>) {
     return await ctx.next();
   } catch (err) {
     console.log("Authentication failure:", err);
-    return new Response("Invalid token", { status: 401 });
+
+    if (ctx.route.startsWith("/api")) {
+      return new Response(JSON.stringify({ error: "Authentication failed " }), {
+        status: 401,
+      });
+    } else {
+      const url = new URL(req.url);
+      url.pathname = "/signin";
+      return Response.redirect(url, 302);
+    }
   }
 }

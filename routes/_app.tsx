@@ -10,6 +10,7 @@ export default function App({ Component }: PageProps) {
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
+        <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Karwall" />
         <link rel="apple-touch-startup-image" href="/static/logi.svg" />
         <link rel="manifest" href="/static/manifest.json" />

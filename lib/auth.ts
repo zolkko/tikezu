@@ -27,3 +27,9 @@ export function authenticateUser(
     username: user.username,
   };
 }
+
+export function generateChallenge(): Uint8Array {
+  const challenge = new Uint8Array(32);
+  crypto.getRandomValues(challenge);
+  return challenge;
+}
