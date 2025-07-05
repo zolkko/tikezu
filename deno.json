@@ -31,7 +31,11 @@
     "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
     "$std/": "https://deno.land/std@0.216.0/",
     "djwt": "https://deno.land/x/djwt@v3.0.2/mod.ts",
-    "$lib/": "./lib/"
+    "redis": "https://deno.land/x/redis@v0.40.0/mod.ts",
+    "bcrypt": "https://deno.land/x/bcrypt@v0.4.1/mod.ts",
+    "$lib/": "./lib/",
+    "$islands/": "./islands/",
+    "$components/": "./components/"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

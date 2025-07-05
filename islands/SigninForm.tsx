@@ -1,6 +1,6 @@
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
-import { Button } from "../components/Button.tsx";
+import { Button } from "$components/Button.tsx";
 
 export default function SigninForm() {
   const [username, setUsername] = useState("");
@@ -32,6 +32,7 @@ export default function SigninForm() {
       globalThis.location.href = "/";
     } catch (err) {
       console.error(err);
+
       if (err instanceof Error) {
         setError(err.message);
       } else {

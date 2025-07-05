@@ -1,5 +1,5 @@
-import { authenticateUser } from "../../lib/auth.ts";
-import { createToken } from "../../lib/jwt.ts";
+import { authenticateUser } from "$lib/utils/auth.ts";
+import { createToken } from "$lib/utils/jwt.ts";
 
 export async function handler(
   req: Request,
@@ -13,7 +13,7 @@ export async function handler(
   try {
     const body = await req.json();
     const { username, password } = body;
-    const user = authenticateUser(username, password);
+    const user = await authenticateUser(username, password);
     if (!user) {
       return new Response(
         JSON.stringify({ error: "Invalid credentials" }),
@@ -24,7 +24,7 @@ export async function handler(
       );
     }
 
-    const token = await createToken(user.username);
+    const token = await createToken(user.name);
 
     return new Response(
       JSON.stringify({ token }),

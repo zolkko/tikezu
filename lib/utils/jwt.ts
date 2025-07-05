@@ -10,11 +10,15 @@ const JWT_CRYPTO_KEY = await crypto.subtle.generateKey(
 
 export interface JWTPayload extends Payload {
   username: string;
+  biometricEnabled: boolean;
+  channenge: string;
 }
 
 export async function createToken(username: string): Promise<string> {
   const payload: JWTPayload = {
     username,
+    biometricEnabled: false,
+    channenge: "",
     exp: Date.now() + JWT_EXP_MILLS,
   };
   return await create({ alg: "HS512", typ: "JWT" }, payload, JWT_CRYPTO_KEY);

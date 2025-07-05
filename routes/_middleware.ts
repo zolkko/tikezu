@@ -1,5 +1,5 @@
 import { FreshContext } from "$fresh/server.ts";
-import { verifyToken } from "../lib/jwt.ts";
+import { verifyToken } from "$lib/utils/jwt.ts";
 
 interface State {
   username?: string;
