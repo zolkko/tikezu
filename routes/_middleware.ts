@@ -22,7 +22,7 @@ export async function handler(req: Request, ctx: FreshContext<State>) {
     return await ctx.next();
   }
 
-  const publicRoutes = ["/signin", "/signup", "/api/auth"];
+  const publicRoutes = ["/static", "/signin", "/signup", "/api/auth"];
 
   if (publicRoutes.includes(ctx.route)) {
     return await ctx.next();

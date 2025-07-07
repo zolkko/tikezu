@@ -7,14 +7,13 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
 import * as $api_auth from "./routes/api/auth.ts";
 import * as $api_auth_challenge from "./routes/api/auth/challenge.ts";
-import * as $authn from "./routes/authn.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $signin from "./routes/signin.tsx";
 import * as $signup from "./routes/signup.tsx";
-import * as $Biometric from "./islands/Biometric.tsx";
 import * as $SigninForm from "./islands/SigninForm.tsx";
 import * as $SignupForm from "./islands/SignupForm.tsx";
+import * as $WebAuthn from "./islands/WebAuthn.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -24,16 +23,15 @@ const manifest = {
     "./routes/_middleware.ts": $_middleware,
     "./routes/api/auth.ts": $api_auth,
     "./routes/api/auth/challenge.ts": $api_auth_challenge,
-    "./routes/authn.tsx": $authn,
     "./routes/greet/[name].tsx": $greet_name_,
     "./routes/index.tsx": $index,
     "./routes/signin.tsx": $signin,
     "./routes/signup.tsx": $signup,
   },
   islands: {
-    "./islands/Biometric.tsx": $Biometric,
     "./islands/SigninForm.tsx": $SigninForm,
     "./islands/SignupForm.tsx": $SignupForm,
+    "./islands/WebAuthn.tsx": $WebAuthn,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

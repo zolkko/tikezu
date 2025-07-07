@@ -29,6 +29,7 @@ async function populateUsers() {
   }
 
   console.log("Finished populating users");
+
   Deno.exit(0);
 }
 

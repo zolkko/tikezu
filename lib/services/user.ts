@@ -1,6 +1,6 @@
 import { User } from "$lib/types/user.ts";
 import { RedisUserRepository, UserRepository } from "$lib/repository/user.ts";
-import { PasswordUtils } from "$lib/utils/password.ts";
+import { PasswordUtils } from "../utils/auth.ts";
 
 export class UserService {
   constructor(private userRepository: UserRepository) {

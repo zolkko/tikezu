@@ -12,7 +12,7 @@ export default function SigninForm() {
     setError("");
 
     try {
-      const response = await fetch("/api/auth", {
+      const response = await fetch("/api/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,54 +43,46 @@ export default function SigninForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <h1 className="text-2xl font-bold text-center mb-6">Sign In</h1>
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           {error}
         </div>
       )}
-      <div>
-        <label
-          htmlFor="username"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Username
-        </label>
+      <div className="mt-6">
+        <label htmlFor="username" className="lbl">Username</label>
         <input
           type="text"
           id="username"
           name="username"
           value={username}
           onChange={(e) => setUsername(e.currentTarget.value)}
-          className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+          className="inp"
           placeholder="Enter your username"
         />
       </div>
 
-      <div className="mt-4">
-        <label
-          htmlFor="password"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Password
-        </label>
+      <div className="mt-6">
+        <label htmlFor="password" className="lbl">Password</label>
         <input
           type="password"
           id="password"
           name="password"
           value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
-          className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+          className="inp"
           placeholder="Enter your password"
         />
       </div>
 
       <div className="mt-6">
-        <Button
-          type="submit"
-          className="w-full p-3 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors"
-        >
-          Sign In
-        </Button>
+        <Button type="submit" className="btn">Sign In</Button>
+      </div>
+
+      <div className="mt-6 text-center">
+        <a href="/signup" className="text-blue-500 hover:underline">
+          Sign Up
+        </a>
       </div>
     </form>
   );
