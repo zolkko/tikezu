@@ -1,6 +1,11 @@
 import { authenticateUser } from "$lib/utils/auth.ts";
 import { createToken } from "$lib/utils/jwt.ts";
 
+interface SigninForm {
+  username: string;
+  password: string;
+}
+
 export async function handler(
   req: Request,
 ): Promise<Response> {
@@ -11,8 +16,7 @@ export async function handler(
   }
 
   try {
-    const body = await req.json();
-    const { username, password } = body;
+    const { username, password } = await req.json() satisfies SigninForm;
     const user = await authenticateUser(username, password);
     if (!user) {
       return new Response(

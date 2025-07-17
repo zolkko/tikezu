@@ -5,7 +5,6 @@ export default function SigninPage() {
     <div className="mdiv">
       <div className="flex-grow overflow-y-auto p-5">
         <div className="max-w-md mx-auto mt-10">
-
           <SigninForm />
         </div>
       </div>

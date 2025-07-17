@@ -5,12 +5,14 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
-import * as $api_auth from "./routes/api/auth.ts";
 import * as $api_auth_challenge from "./routes/api/auth/challenge.ts";
+import * as $api_auth_index from "./routes/api/auth/index.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $signin from "./routes/signin.tsx";
 import * as $signup from "./routes/signup.tsx";
+import * as $Docs from "./islands/Docs.tsx";
+import * as $Documents from "./islands/Documents.tsx";
 import * as $SigninForm from "./islands/SigninForm.tsx";
 import * as $SignupForm from "./islands/SignupForm.tsx";
 import * as $WebAuthn from "./islands/WebAuthn.tsx";
@@ -21,14 +23,16 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_middleware.ts": $_middleware,
-    "./routes/api/auth.ts": $api_auth,
     "./routes/api/auth/challenge.ts": $api_auth_challenge,
+    "./routes/api/auth/index.ts": $api_auth_index,
     "./routes/greet/[name].tsx": $greet_name_,
     "./routes/index.tsx": $index,
     "./routes/signin.tsx": $signin,
     "./routes/signup.tsx": $signup,
   },
   islands: {
+    "./islands/Docs.tsx": $Docs,
+    "./islands/Documents.tsx": $Documents,
     "./islands/SigninForm.tsx": $SigninForm,
     "./islands/SignupForm.tsx": $SignupForm,
     "./islands/WebAuthn.tsx": $WebAuthn,

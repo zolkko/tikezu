@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>iOS Web App Mockup with Tailwind</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Disclosure indicator arrow */
+    .disclosure {
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      border-color: #c7c7cc;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(-45deg);
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body class="bg-white text-black font-sans antialiased h-screen flex flex-col">
+
+<div id="app" class="flex flex-col flex-1 overflow-hidden"></div>
+
+<!-- Preact and htm via unpkg -->
+<script type="module">
+  import { h, render, Component } from 'https://unpkg.com/preact@10.13.2?module';
+  import htm from 'https://unpkg.com/htm?module';
+  const html = htm.bind(h);
+
+  // SVG icons as components
+  const TICKET_ICON = html`<svg class="w-5 h-5 mb-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 9V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 1 0 4v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2a2 2 0 0 1 0-4z"/></svg>`;
+  const GEAR_ICON = html`<svg class="w-5 h-5 mb-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.14 12.94a7.14 7.14 0 0 0 0-1.88l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a6.8 6.8 0 0 0-1.61-.94L14.5 4.4a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4L9 6.48a6.8 6.8 0 0 0-1.61.94l-2.4-.96a.5.5 0 0 0-.6.22L2.5 9.98a.5.5 0 0 0 .12.64l2.03 1.58a7.14 7.14 0 0 0 0 1.88L2.62 14.96a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.5.4 1.04.73 1.61.94l.5 2.07a.5.5 0 0 0 .5.4h4a.5.5 0 0 0 .5-.4l.5-2.07a6.8 6.8 0 0 0 1.61-.94l2.4.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>`;
+
+  class App extends Component {
+    state = {
+      activeTab: 'tickets',
+      searchTerm: '',
+      tickets: [
+        { id: 1234, title: 'Ticket #1234', subtitle: 'Issue with login' },
+        { id: 1235, title: 'Ticket #1235', subtitle: 'Payment failed' },
+        { id: 1236, title: 'Ticket #1236', subtitle: 'App crashes on start' },
+        { id: 1237, title: 'Ticket #1237', subtitle: 'Feature request: dark mode' },
+        { id: 1238, title: 'Ticket #1238', subtitle: 'Unable to reset password' }
+      ],
+      settings: [
+        { id: 1, title: 'Account' },
+        { id: 2, title: 'Notifications' },
+        { id: 3, title: 'Privacy' }
+      ]
+    };
+
+    setTab = (tab) => {
+      this.setState({ activeTab: tab, searchTerm: '' }); // Reset search on tab switch
+    };
+
+    onSearchChange = (e) => {
+      this.setState({ searchTerm: e.target.value });
+    };
+
+    uploadTicket = () => {
+      alert('Upload Ticket clicked!');
+    };
+
+    renderTickets() {
+      const filtered = this.state.tickets.filter(t => {
+        const term = this.state.searchTerm.toLowerCase();
+        return (
+          t.title.toLowerCase().includes(term) ||
+          t.subtitle.toLowerCase().includes(term)
+        );
+      });
+
+      return html`
+        <main role="main" aria-label="Tickets List" class="overflow-auto flex-1">
+          <section class="sticky top-12 bg-gray-50 border-b border-gray-300 px-4 py-2 z-10">
+            <input
+              type="search"
+              placeholder="Search Tickets"
+              value=${this.state.searchTerm}
+              onInput=${this.onSearchChange}
+              aria-label="Search tickets"
+              spellcheck="false"
+              autocomplete="off"
+              class="w-full py-2 px-3 rounded-full border border-gray-300 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
+            />
+          </section>
+          <ul class="divide-y divide-gray-200">
+            ${filtered.length > 0
+              ? filtered.map(
+                  (ticket) => html`
+                    <li role="listitem" tabindex="0" key=${ticket.id} aria-label=${ticket.title + ', ' + ticket.subtitle}
+                      class="cursor-pointer p-4 hover:bg-gray-100 active:bg-gray-200 min-h-[44px] flex flex-col"
+                    >
+                      <span class="font-semibold text-base leading-tight">${ticket.title}</span>
+                      <span class="text-gray-500 text-sm">${ticket.subtitle}</span>
+                    </li>
+                  `
+                )
+              : html`
+                <li class="p-4 text-gray-500 text-center select-none">No tickets found.</li>
+              `}
+          </ul>
+        </main>
+      `;
+    }
+
+    renderSettings() {
+      return html`
+        <main role="main" aria-label="Settings" class="overflow-auto flex-1 bg-gray-100">
+          <ul class="mt-6 mb-[80px] divide-y divide-gray-300 bg-gray-100">
+            ${this.state.settings.map(
+              (setting) => html`
+                <li role="listitem" tabindex="0" key=${setting.id} aria-label=${setting.title} 
+                  class="bg-white px-4 py-4 flex justify-between items-center cursor-pointer min-h-[44px] text-base"
+                >
+                  <span>${setting.title}</span>
+                  <span class="disclosure" aria-hidden="true"></span>
+                </li>
+              `
+            )}
+          </ul>
+        </main>
+      `;
+    }
+
+    render() {
+      const { activeTab } = this.state;
+      return html`
+        <div class="flex flex-col h-screen">
+          <header role="banner" aria-label="App navigation" class="flex items-center justify-between px-4 py-3 border-b border-gray-300 bg-gray-50 sticky top-0 z-20 select-none">
+            <span class="font-semibold text-lg">${activeTab === 'tickets' ? 'Tickets' : 'Settings'}</span>
+            ${activeTab === 'tickets'
+              ? html`<button 
+                  class="text-blue-600 font-semibold text-base px-3 py-1 rounded-lg active:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="button"
+                  onClick=${this.uploadTicket}
+                >Upload Ticket</button>`
+              : html`<span class="w-[104px]" aria-hidden="true"></span>`}
+          </header>
+
+          ${activeTab === 'tickets' ? this.renderTickets() : this.renderSettings()}
+
+          <nav role="tablist" aria-label="Main tabs" class="flex border-t border-gray-300 bg-gray-50 h-[49px]">
+            <button
+              role="tab"
+              aria-selected=${activeTab === 'tickets'}
+              aria-controls="tickets-panel"
+              class="flex-1 flex flex-col items-center justify-center text-xs leading-none transition-colors duration-150 ease-in-out ${activeTab === 'tickets' ? 'text-blue-600' : 'text-gray-500'} focus:outline-none"
+              onClick=${() => this.setTab('tickets')}
+              tabindex=${activeTab === 'tickets' ? 0 : -1}
+              aria-label="Tickets tab"
+            >
+              ${TICKET_ICON}
+              Tickets
+            </button>
+            <button
+              role="tab"
+              aria-selected=${activeTab === 'settings'}
+              aria-controls="settings-panel"
+              class="flex-1 flex flex-col items-center justify-center text-xs leading-none transition-colors duration-150 ease-in-out ${activeTab === 'settings' ? 'text-blue-600' : 'text-gray-500'} focus:outline-none"
+              onClick=${() => this.setTab('settings')}
+              tabindex=${activeTab === 'settings' ? 0 : -1}
+              aria-label="Settings tab"
+            >
+              ${GEAR_ICON}
+              Settings
+            </button>
+          </nav>
+        </div>
+      `;
+    }
+  }
+
+  render(html`<${App} />`, document.getElementById('app'));
+</script>
+</body>
+</html>

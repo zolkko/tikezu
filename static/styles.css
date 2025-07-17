@@ -29,3 +29,35 @@
   @apply w-full p-3 rounded-lg border border-gray-300 shadow-sm
     focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
 }
+
+/* -------- */
+.tab-panel {
+  @apply flex border-t border-gray-300 bg-gray-50 h-[49px];
+}
+
+.tab-btn {
+  @apply flex-1 flex flex-col items-center justify-center text-xs leading-none
+    transition-colors duration-150 ease-in-out focus:outline-none
+    "text-gray-500" [&.selected]:text-blue-600;
+}
+
+.tickets {
+  @apply divide-y divide-gray-200;
+}
+
+.ticket-item {
+  @apply cursor-pointer p-4 hover:bg-gray-100 active:bg-gray-200 min-h-[44px]
+    flex flex-col;
+}
+
+.ticket-item > span:first-of-type {
+  @apply font-semibold text-base leading-tight;
+}
+
+.ticket-item > span:nth-of-type(2) {
+  @apply text-gray-500 text-sm;
+}
+
+.no-tickets {
+  @apply p-4 text-gray-500 text-center select-none;
+}
