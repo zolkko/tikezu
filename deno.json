@@ -1,44 +1,20 @@
 {
   "lock": false,
   "tasks": {
-    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
-    "manifest": "deno task cli manifest $(pwd)",
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "build": "deno run -A dev.ts build",
-    "preview": "deno run -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
-  },
-  "lint": {
-    "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
-      ]
-    }
-  },
-  "exclude": [
-    "**/_fresh/*"
-  ],
-  "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.7.3/",
-    "preact": "npm:preact@^10.22.1",
-    "preact/hooks": "npm:preact@^10.22.1/hooks",
-    "@preact-icons/tb": "jsr:@preact-icons/tb@^1.0.13",
-    "tailwindcss": "npm:tailwindcss@3.4.1",
-    "tailwindcss/": "npm:/tailwindcss@3.4.1/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
-    "$std/": "https://deno.land/std@0.216.0/",
-    "djwt": "https://deno.land/x/djwt@v3.0.2/mod.ts",
-    "redis": "https://deno.land/x/redis@v0.40.0/mod.ts",
-    "bcrypt": "https://deno.land/x/bcrypt@v0.4.1/mod.ts",
-    "$lib/": "./lib/",
-    "$islands/": "./islands/",
-    "$components/": "./components/"
+    "start": "cd apps/web && deno task start",
+    "check": "cd apps/web && deno task check",
+    "cli": "cd apps/web && deno task cli",
+    "manifest": "cd apps/web && deno task manifest",
+    "build": "cd apps/web && deno task build",
+    "preview": "cd apps/web && deno task preview",
+    "update": "cd apps/web && deno task update"
   },
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "lib": ["dom", "esnext"],
+    "strict": true
   },
-  "nodeModulesDir": "auto"
+  "imports": {
+    "@web/": "./apps/web/",
+    "@lib/": "./lib/"
+  }
 }
