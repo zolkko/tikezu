@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="123.92693"
+   height="47"
+   viewBox="0 0 123.92693 47.000001"
+   fill="none"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="logo.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title1">tikezu logo</title>
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="false"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="9.1515153"
+     inkscape:cx="27.97351"
+     inkscape:cy="14.423841"
+     inkscape:window-width="2488"
+     inkscape:window-height="1387"
+     inkscape:window-x="73"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6"
+     showguides="true"
+     showgrid="true"
+     showborder="false"
+     borderlayer="false"
+     inkscape:antialias-rendering="false">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="-0.15563857"
+       originy="-0.090515496"
+       spacingx="0.5"
+       spacingy="0.5"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="1"
+       enabled="true"
+       visible="true"
+       snapvisiblegridlinesonly="true"
+       dotted="false" />
+  </sodipodi:namedview>
+  <!-- Definitions for masks -->
+  <defs
+     id="defs1">
+    <mask
+       id="tMask">
+      <rect
+         fill="#000000"
+         id="rect10"
+         width="28.530704"
+         height="11.472763"
+         x="9.3106298"
+         y="8.885663"
+         rx="0"
+         inkscape:label="NewMask" />
+    </mask>
+  </defs>
+  <!-- Square QR-style ticket container -->
+  <rect
+     x="1"
+     y="1"
+     width="45"
+     height="45"
+     rx="4"
+     fill="#ff6b2b"
+     fill-opacity="0.1"
+     stroke="#ff6b2b"
+     stroke-width="2"
+     id="rect2"
+     inkscape:label="QRBorder" />
+  <!-- QR code elements with mask -->
+  <g
+     mask="url(#tMask)"
+     id="g5"
+     inkscape:label="QRInner"
+     transform="translate(-6.9999999,-4)">
+    <!-- Top left pattern with transparent center -->
+    <path
+       d="m 12.85,9.91 h 8.999999 v 9 H 12.85 Z m 1.992437,1.998354 5.007562,-0.0066 V 16.91 l -5.007562,-0.0039 z"
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       fill="#ff6b2b"
+       id="path2"
+       sodipodi:nodetypes="cccccccccc" />
+    <!-- Top right pattern with transparent center -->
+    <path
+       d="m 38.856369,9.9116117 h 9 v 9.0000003 h -9 z m 2.013864,1.9917673 h 4.986136 v 5.008233 l -5.03033,0.01105 z"
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       fill="#ff6b2b"
+       id="path3"
+       sodipodi:nodetypes="cccccccccc" />
+    <!-- Bottom left pattern with transparent center -->
+    <path
+       d="m 12.85,35.911612 h 9 v 9 h -9 z m 1.992,1.986631 5.013524,0.01619 -0.0055,4.997184 -5.008,3.88e-4 z"
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       fill="#ff6b2b"
+       id="path4"
+       sodipodi:nodetypes="cccccccccc" />
+    <!-- Bottom right pattern with transparent center -->
+    <path
+       d="m 38.867417,35.912 h 9 v 9 h -9 z m 1.96967,2.511049 5.03033,-0.01105 v 4.5 l -5.03033,-0.03315 z"
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       fill="#ff6b2b"
+       id="path5"
+       sodipodi:nodetypes="cccccccccc" />
+  </g>
+  <!-- Blue T overlaid -->
+  <!-- Modern Text "ikezu" with tighter spacing -->
+  <g
+     id="text6"
+     style="font-weight:600;font-size:34px;font-family:Poppins, Arial, sans-serif;letter-spacing:-0.05em;fill:#002a63;stroke:#002a63"
+     inkscape:label="ikezu"
+     aria-label="ikezu">
+    <path
+       style="fill:#00285e;stroke:#00285e"
+       d="m 50.02478,15.250843 v -4.316406 h 4.665039 v 4.316406 z m 0,20.021484 V 17.641468 h 4.665039 v 17.630859 z m 7.580274,0 v -24.33789 h 4.665039 v 12.916015 l 5.461914,-6.208984 h 5.744141 l -6.026368,6.441406 6.458008,11.189453 h -5.030273 l -4.432617,-7.918945 -2.174805,2.274414 v 5.644531 z"
+       id="path1" />
+    <path
+       style="fill:#ff6b2b;stroke:#ff6b2b;stroke-opacity:0.101961"
+       d="m 85.19021,29.660999 4.648438,0.780274 q -0.896485,2.55664 -2.838867,3.901367 -1.925782,1.328125 -4.831055,1.328125 -4.598633,0 -6.806641,-3.004883 -1.743164,-2.407226 -1.743164,-6.076172 0,-4.382812 2.291016,-6.856445 2.291016,-2.490234 5.793945,-2.490234 3.934571,0 6.208985,2.606445 2.274414,2.589844 2.174804,7.952148 h -11.6875 q 0.04981,2.075196 1.128907,3.237305 1.079101,1.145508 2.689453,1.145508 1.095703,0 1.842773,-0.597656 0.74707,-0.597657 1.128906,-1.925782 z m 0.265625,-4.714843 q -0.0498,-2.025391 -1.045898,-3.07129 -0.996094,-1.0625 -2.423828,-1.0625 -1.527344,0 -2.523438,1.112305 -0.996093,1.112305 -0.979492,3.021485 z m 4.857619,10.326171 v -3.635742 l 6.607422,-7.586914 q 1.626953,-1.859375 2.407226,-2.639648 -0.813476,0.0498 -2.141601,0.06641 l -6.225586,0.0332 v -3.868164 h 14.576175 v 3.303711 l -6.740238,7.769531 -2.374023,2.573242 q 1.942382,-0.116211 2.407226,-0.116211 h 7.221675 v 4.100586 z m 28.780466,0 v -2.639648 q -0.96289,1.411133 -2.54004,2.224609 -1.56054,0.813477 -3.30371,0.813477 -1.77637,0 -3.1875,-0.780274 -1.41113,-0.780273 -2.04199,-2.191406 -0.63086,-1.411133 -0.63086,-3.901367 v -11.15625 h 4.66504 v 8.101563 q 0,3.71875 0.24902,4.565429 0.26563,0.830078 0.94629,1.328125 0.68067,0.481446 1.72656,0.481446 1.19532,0 2.14161,-0.647461 0.94628,-0.664063 1.29492,-1.626954 0.34863,-0.979492 0.34863,-4.764648 v -7.4375 h 4.66504 v 17.630859 z"
+       id="path6" />
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>tikezu logo</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="fill:#00285e;stroke:#00285e;stroke-opacity:1"
+     d="m 20.255,39.181033 h 6.632 V 15.401 h 9.618 V 10.616 H 10.62 v 4.785 l 9.635,-1.83e-4 z"
+     id="path9"
+     sodipodi:nodetypes="ccccccccc" />
+</svg>
