@@ -15,6 +15,193 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="powerclip"
+       message=""
+       id="path-effect21"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false" />
+    <inkscape:path-effect
+       effect="powerclip"
+       message=""
+       id="path-effect20"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false" />
+    <inkscape:path-effect
+       effect="powerclip"
+       message=""
+       id="path-effect18"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false" />
+    <inkscape:path-effect
+       effect="powerclip"
+       message=""
+       id="path-effect17"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false" />
+    <inkscape:path-effect
+       effect="powerclip"
+       message=""
+       id="path-effect16"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false" />
+    <inkscape:path-effect
+       effect="powermask"
+       id="path-effect11"
+       is_visible="true"
+       lpeversion="1"
+       uri="#mask-powermask-path-effect11"
+       invert="false"
+       hide_mask="false"
+       background="true"
+       background_color="#ffffffff" />
+    <filter
+       id="mask-powermask-path-effect7_inverse"
+       inkscape:label="filtermask-powermask-path-effect7"
+       style="color-interpolation-filters:sRGB"
+       height="100"
+       width="100"
+       x="-50"
+       y="-50">
+      <feColorMatrix
+         id="mask-powermask-path-effect7_primitive1"
+         values="1"
+         type="saturate"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="mask-powermask-path-effect7_primitive2"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+    </filter>
+    <filter
+       id="mask-powermask-path-effect8_inverse"
+       inkscape:label="filtermask-powermask-path-effect8"
+       style="color-interpolation-filters:sRGB"
+       height="100"
+       width="100"
+       x="-50"
+       y="-50">
+      <feColorMatrix
+         id="mask-powermask-path-effect8_primitive1"
+         values="1"
+         type="saturate"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="mask-powermask-path-effect8_primitive2"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+    </filter>
+    <filter
+       id="mask-powermask-path-effect9_inverse"
+       inkscape:label="filtermask-powermask-path-effect9"
+       style="color-interpolation-filters:sRGB"
+       height="100"
+       width="100"
+       x="-50"
+       y="-50">
+      <feColorMatrix
+         id="mask-powermask-path-effect9_primitive1"
+         values="1"
+         type="saturate"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="mask-powermask-path-effect9_primitive2"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+    </filter>
+    <filter
+       id="mask-powermask-path-effect12_inverse"
+       inkscape:label="filtermask-powermask-path-effect12"
+       style="color-interpolation-filters:sRGB"
+       height="100"
+       width="100"
+       x="-50"
+       y="-50">
+      <feColorMatrix
+         id="mask-powermask-path-effect12_primitive1"
+         values="1"
+         type="saturate"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="mask-powermask-path-effect12_primitive2"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+    </filter>
+    <filter
+       id="mask-powermask-path-effect15_inverse"
+       inkscape:label="filtermask-powermask-path-effect15"
+       style="color-interpolation-filters:sRGB"
+       height="100"
+       width="100"
+       x="-50"
+       y="-50">
+      <feColorMatrix
+         id="mask-powermask-path-effect15_primitive1"
+         values="1"
+         type="saturate"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="mask-powermask-path-effect15_primitive2"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+    </filter>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath17">
+      <rect
+         style="display:none;fill:#ffffff;fill-opacity:1;stroke-width:0;paint-order:markers stroke fill"
+         id="rect17"
+         width="7.9495053"
+         height="7.9768214"
+         x="15.850993"
+         y="12.878311"
+         clip-path="none"
+         sodipodi:type="rect"
+         d="m 15.850993,12.878311 h 7.949505 v 7.976822 h -7.949505 z" />
+      <path
+         id="lpe_path-effect17"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0;paint-order:markers stroke fill"
+         class="powerclip"
+         d="m 7.85,4.91 h 18.999999 v 19 H 7.85 Z m 8.000993,7.968311 v 7.976822 h 7.949505 v -7.976822 z" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath20">
+      <rect
+         style="display:none;fill:#ffffff;fill-opacity:1;stroke-width:0;paint-order:markers stroke fill"
+         id="rect21"
+         width="7.9495053"
+         height="8.4685431"
+         x="36.909767"
+         y="12.928807"
+         clip-path="none"
+         sodipodi:type="rect"
+         inkscape:label="rmask"
+         d="m 36.909767,12.928807 h 7.949505 v 8.468543 h -7.949505 z" />
+      <path
+         id="lpe_path-effect21"
+         style="display:block;fill:#ffffff;fill-opacity:1;stroke-width:0;paint-order:markers stroke fill"
+         class="powerclip"
+         d="m 33.856369,4.9116117 h 19 V 23.911612 h -19 z m 3.053398,8.0171953 v 8.468543 h 7.949505 v -8.468543 z" />
+    </clipPath>
+  </defs>
   <title
      id="title1">tikezu logo</title>
   <sodipodi:namedview
@@ -26,9 +213,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="9.1515153"
-     inkscape:cx="27.97351"
-     inkscape:cy="14.423841"
+     inkscape:zoom="36.606061"
+     inkscape:cx="27.153973"
+     inkscape:cy="36.551324"
      inkscape:window-width="2488"
      inkscape:window-height="1387"
      inkscape:window-x="73"
@@ -51,28 +238,22 @@
        empopacity="0.30196078"
        color="#0099e5"
        opacity="0.14901961"
-       empspacing="1"
+       empspacing="3"
        enabled="true"
        visible="true"
        snapvisiblegridlinesonly="true"
        dotted="false" />
   </sodipodi:namedview>
   <!-- Definitions for masks -->
-  <defs
-     id="defs1">
-    <mask
-       id="tMask">
-      <rect
-         fill="#000000"
-         id="rect10"
-         width="28.530704"
-         height="11.472763"
-         x="9.3106298"
-         y="8.885663"
-         rx="0"
-         inkscape:label="NewMask" />
+  <!--
+  <defs id="defs1">
+    <mask id="tMask">
+       <rect x="8" y="5" width="45" height="45" fill="white"/>
+       <rect id="wmask" x="8" y="6" width="34" height="5" fill="white"/>
+       <rect id="bmask" x="9.3106298" y="8.885663" width="28.530704" height="11.472763" fill="white" />
     </mask>
   </defs>
+  -->
   <!-- Square QR-style ticket container -->
   <rect
      x="1"
@@ -87,8 +268,9 @@
      id="rect2"
      inkscape:label="QRBorder" />
   <!-- QR code elements with mask -->
+  <!-- >
+     mask="url(#tMask)" -->
   <g
-     mask="url(#tMask)"
      id="g5"
      inkscape:label="QRInner"
      transform="translate(-6.9999999,-4)">
@@ -98,16 +280,25 @@
        fill-rule="evenodd"
        clip-rule="evenodd"
        fill="#ff6b2b"
-       id="path2"
-       sodipodi:nodetypes="cccccccccc" />
-    <!-- Top right pattern with transparent center -->
+       id="path16"
+       sodipodi:nodetypes="cccccccccc"
+       mask="none"
+       style="display:block"
+       clip-path="url(#clipPath17)"
+       inkscape:path-effect="#path-effect17"
+       inkscape:original-d="m 12.85,9.91 h 8.999999 v 9 H 12.85 Z m 1.992437,1.998354 5.007562,-0.0066 V 16.91 l -5.007562,-0.0039 z" />
     <path
        d="m 38.856369,9.9116117 h 9 v 9.0000003 h -9 z m 2.013864,1.9917673 h 4.986136 v 5.008233 l -5.03033,0.01105 z"
        fill-rule="evenodd"
        clip-rule="evenodd"
        fill="#ff6b2b"
-       id="path3"
-       sodipodi:nodetypes="cccccccccc" />
+       id="path19"
+       sodipodi:nodetypes="cccccccccc"
+       style="display:block"
+       clip-path="url(#clipPath20)"
+       inkscape:path-effect="#path-effect21"
+       inkscape:original-d="m 38.856369,9.9116117 h 9 v 9.0000003 h -9 z m 2.013864,1.9917673 h 4.986136 v 5.008233 l -5.03033,0.01105 z" />
+    <!-- Top right pattern with transparent center -->
     <!-- Bottom left pattern with transparent center -->
     <path
        d="m 12.85,35.911612 h 9 v 9 h -9 z m 1.992,1.986631 5.013524,0.01619 -0.0055,4.997184 -5.008,3.88e-4 z"
@@ -151,8 +342,8 @@
     </rdf:RDF>
   </metadata>
   <path
-     style="fill:#00285e;stroke:#00285e;stroke-opacity:1"
-     d="m 20.255,39.181033 h 6.632 V 15.401 h 9.618 V 10.616 H 10.62 v 4.785 l 9.635,-1.83e-4 z"
+     style="fill:#00285e;stroke:#00285e;stroke-width:1.00781;stroke-opacity:1"
+     d="m 19.84,38.4 h 7.01 V 15.9 h 9.5 v -5.5 h -26 v 5.5 h 9.49 z"
      id="path9"
      sodipodi:nodetypes="ccccccccc" />
 </svg>
