@@ -1,0 +1,9 @@
+  {
+    "name": "tikezu",
+    "private": true,
+    "workspaces": [
+      "apps/mobile",
+      "./lib"
+    ],
+    "devDependencies": {}
+  }
