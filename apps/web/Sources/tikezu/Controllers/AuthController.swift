@@ -35,15 +35,11 @@ struct AuthController {
         let input = try await request.decode(as: SignInRequest.self, context: context)
         let userService = UserService(db: fluent.db())
 
-        guard
-            let user = try await userService.authenticateUser(
-                username: input.username, password: input.password)
-        else {
+        guard let user = try await userService.authenticateUser(username: input.username, password: input.password) else {
             throw HTTPError(.unauthorized)
         }
 
-        return try await makeSignInResponse(
-            subject: user.id?.uuidString ?? user.username, username: user.username)
+        return try await makeSignInResponse(subject: user.id?.uuidString ?? user.username, username: user.username)
     }
 
     struct RefreshTokenRequest: Decodable {
