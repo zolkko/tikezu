@@ -24,13 +24,6 @@ func buildApplication() async throws -> some ApplicationProtocol {
     let fluent = try await makeFluent()
     let router = Router(context: TikezuContext.self)
     router.add(middleware: LogRequestsMiddleware<TikezuContext>(.info))
-//    router.add(middleware: FileMiddleware<TikezuContext>(rootFolder: "../public"))
-
-    /*
-        context: { request, source in
-            return TikezuContext(source: source, db: fluent.db())
-        }
-     */
 
     let bindHostName = env.get("TIKEZU_HOST") ?? DEFAULT_HOST
     let bindHostPort = env.get("TIKEZU_PORT").flatMap { Int($0) } ?? DEFAULT_PORT
@@ -53,10 +46,6 @@ func buildApplication() async throws -> some ApplicationProtocol {
 //      let user = try context.requireIdentity()
 //      return "Hello \(user.username)!"
 //  }
-
-    router.get("/") { req, context in
-        return "Hello, Swift Hummingbird!"
-    }
 
     return app
 }

@@ -1,25 +1,31 @@
+import Foundation
 import Hummingbird
-import HummingbirdAuth
 import HummingbirdFluent
 import JWTKit
-import Foundation
-import FluentKit
 
-/*
 struct AuthController {
+
+    let fluent: Fluent
+
     let jwtSigners: JWTKeyCollection
 
-    func addRoutes(to group: RouterGroup<TikezuContext>) {
-        group.post("/", use: self.signIn)
-        group.get("/challenge", use: self.getChallenge)
+    init(jwtSigners: JWTKeyCollection, fluent: Fluent) {
+        self.jwtSigners = jwtSigners
+        self.fluent = fluent
     }
 
-    struct SignInRequest: Codable {
+    var routes: RouteCollection<TikezuContext> {
+        return RouteCollection(context: TikezuContext.self)
+            .post("/", use: self.signIn)
+            .post("/refresh", use: self.refresh)
+    }
+
+    struct SignInRequest: Decodable {
         let username: String
         let password: String
     }
 
-    struct SignInResponse: Codable {
+    struct SignInResponse: ResponseEncodable {
         let apiToken: String
         let refreshToken: String
     }
@@ -27,43 +33,49 @@ struct AuthController {
     @Sendable
     func signIn(request: Request, context: TikezuContext) async throws -> SignInResponse {
         let input = try await request.decode(as: SignInRequest.self, context: context)
-        let userService = UserService(db: context.db)
-        
-        guard let user = try await userService.authenticateUser(username: input.username, password: input.password) else {
+        let userService = UserService(db: fluent.db())
+
+        guard
+            let user = try await userService.authenticateUser(
+                username: input.username, password: input.password)
+        else {
             throw HTTPError(.unauthorized)
         }
-        
-        let payload = JWTPayloadData(
-            subject: .init(value: user.id?.uuidString ?? user.username),
-            expiration: .init(value: Date().addingTimeInterval(3600)),
-            username: user.username
-        )
-        
-        let token = try await jwtSigners.sign(payload)
-        
-        // In the original code there were two tokens, we can just use the same or create another one
-        let refreshToken = try await jwtSigners.sign(payload) // Should ideally have longer expiration
-        
-        return SignInResponse(apiToken: token, refreshToken: refreshToken)
+
+        return try await makeSignInResponse(
+            subject: user.id?.uuidString ?? user.username, username: user.username)
     }
 
-    struct ChallengeResponse: Codable {
-        let challenge: [UInt8]
-        let timestamp: Int64
+    struct RefreshTokenRequest: Decodable {
+        let refreshToken: String
     }
 
     @Sendable
-    func getChallenge(request: Request, context: TikezuContext) async throws -> ChallengeResponse {
-        var bytes = [UInt8](repeating: 0, count: 32)
-        let status = SecRandomCopyBytes(kSecRandomDefault, 32, &bytes)
-        guard status == errSecSuccess else {
-            throw HTTPError(.internalServerError)
-        }
-        
-        return ChallengeResponse(
-            challenge: bytes,
-            timestamp: Int64(Date().timeIntervalSince1970 * 1000)
-        )
+    func refresh(request: Request, context: TikezuContext) async throws -> SignInResponse {
+        let input = try await request.decode(as: RefreshTokenRequest.self, context: context)
+        let payload = try await jwtSigners.verify(input.refreshToken, as: JWTPayloadData.self)
+        return try await makeSignInResponse(subject: payload.subject.value, username: payload.username)
+    }
+
+    private static let DEFAULT_EXP: TimeInterval = 3600
+
+    private static let DEFAULT_REFRESH_EXP: TimeInterval = DEFAULT_EXP * 24
+
+    private func makeSignInResponse(subject: String, username: String) async throws -> SignInResponse {
+        let token = try await jwtSigners.sign(
+            JWTPayloadData(
+                subject: .init(value: subject),
+                expiration: .init(value: Date().addingTimeInterval(Self.DEFAULT_EXP)),
+                username: username
+            ))
+
+        let refreshToken = try await jwtSigners.sign(
+            JWTPayloadData(
+                subject: .init(value: subject),
+                expiration: .init(value: Date().addingTimeInterval(Self.DEFAULT_REFRESH_EXP)),
+                username: username
+            ))
+
+        return SignInResponse(apiToken: token, refreshToken: refreshToken)
     }
 }
-*/

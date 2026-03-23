@@ -13,8 +13,11 @@ struct JWTAuthenticator: AuthenticatorMiddleware {
 
     let jwtSigners: JWTKeyCollection
 
-    init(jwtSigners: JWTKeyCollection) {
+    let fluent: Fluent
+
+    init(jwtSigners: JWTKeyCollection, fluent: Fluent) {
         self.jwtSigners = jwtSigners
+        self.fluent = fluent
     }
 
     func authenticate(request: Request, context: TikezuContext) async throws -> User? {
@@ -24,24 +27,11 @@ struct JWTAuthenticator: AuthenticatorMiddleware {
 
         do {
             let payload = try await jwtSigners.verify(token, as: JWTPayloadData.self)
-            let userService = UserService(db: context.db)
+            let userService = UserService(db: fluent.db())
             return try await userService.findByName(payload.username)
         } catch {
             return nil
         }
-
-        /*
-        guard let basic = request.headers.basic else { return nil }
-        guard let user = try await database.getUserWithUsername(basic.username) else {
-            return nil
-        }
-        return try await context.threadPool.runIfActive {
-            if Bcrypt.verify(basic.password, hash: user.passwordHash) {
-                return user
-            }
-            return nil
-        }
-        */
     }
 
     private func tokenFromCookies(request: Request) -> String? {
