@@ -1,12 +1,8 @@
 import FluentKit
+import FluentSQLiteDriver
 import Hummingbird
-import HummingbirdAuth
-import HummingbirdBcrypt
 import HummingbirdFluent
 import JWTKit
-import SQLiteNIO
-import FluentSQLiteDriver
-
 
 let DEFAULT_SECRET = "change-me"
 
@@ -14,19 +10,16 @@ let DEFAULT_HOST = "127.0.0.1"
 
 let DEFAULT_PORT = 8080
 
-
 func buildApplication() async throws -> some ApplicationProtocol {
     let env = try await Environment.dotEnv()
     let logger = Logger(label: "tikezu")
-
-//    let jwtKeyCollection = await makeJwt(from: env)
-
+    let jwtKeyCollection = await makeJwt(from: env)
     let fluent = try await makeFluent()
-    let router = Router(context: TikezuContext.self)
-    router.add(middleware: LogRequestsMiddleware<TikezuContext>(.info))
+    let router = makeRouter(jwtKeyCollection, fluent)
 
     let bindHostName = env.get("TIKEZU_HOST") ?? DEFAULT_HOST
     let bindHostPort = env.get("TIKEZU_PORT").flatMap { Int($0) } ?? DEFAULT_PORT
+
     let app = Application(
         router: router,
         configuration: .init(address: .hostname(bindHostName, port: bindHostPort)),
@@ -34,26 +27,28 @@ func buildApplication() async throws -> some ApplicationProtocol {
         logger: logger,
     )
 
-//  Auth Routes
-//  AuthController(jwtSigners: jwtSigners).addRoutes(to: router.group("api/auth"))
-//
-//  Authenticated Group
-//  let authenticatedGroup = router.group()
-//      .addMiddleware(JWTAuthenticator(jwtSigners: jwtSigners))
-//      .addMiddleware(AuthMiddleware())
-//
-//  authenticatedGroup.get("/profile") { req, context in
-//      let user = try context.requireIdentity()
-//      return "Hello \(user.username)!"
-//  }
-
     return app
+}
+
+func makeRouter(_ jwtKeyCollection: JWTKeyCollection, _ fluent: Fluent) -> Router<TikezuContext> {
+    let router = Router(context: TikezuContext.self)
+        .add(middleware: LogRequestsMiddleware<TikezuContext>(.info))
+
+    let apiRouter =
+        router
+        .group("/api/v1")
+
+    apiRouter
+        .group("/auth")
+        .addRoutes(AuthController(jwtSigners: jwtKeyCollection, fluent: fluent).routes)
+
+    return router
 }
 
 func makeJwt(from env: Environment) async -> JWTKeyCollection {
     let jwtSecret = env.get("JWT_SECRET") ?? DEFAULT_SECRET
     let jwtKeyCollection = JWTKeyCollection()
-    await jwtKeyCollection.add(hmac: "jwtSecret", digestAlgorithm: .sha256, kid: JWKIdentifier("auth-jwt"))
+    await jwtKeyCollection.add(hmac: HMACKey(from: jwtSecret), digestAlgorithm: .sha256, kid: JWKIdentifier("tikezu"))
 
     return jwtKeyCollection
 }
